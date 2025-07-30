@@ -21,9 +21,9 @@
             "uid": "gaea_sqlite"
           },
           
-          "queryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'transfer' THEN event END) AS transfer,\n MAX(CASE WHEN name = 'copy-job-database' THEN event END) AS \"copy-job-database\"\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle;\n",
+          "queryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'transfer' THEN event END) AS transfer,\n MAX(CASE WHEN name = 'copy-job-database' THEN event END) AS \"copy-job-database\"\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle\nORDER BY cycle DESC;\n",
           "queryType": "table",
-          "rawQueryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'transfer' THEN event END) AS transfer,\n MAX(CASE WHEN name = 'copy-job-database' THEN event END) AS \"copy-job-database\"\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle;\n",
+          "rawQueryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'transfer' THEN event END) AS transfer,\n MAX(CASE WHEN name = 'copy-job-database' THEN event END) AS \"copy-job-database\"\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle\nORDER BY cycle DESC;\n",
           "format": "table"
         },
         {
@@ -31,9 +31,9 @@
           "datasource": { 
             "type": "frser-sqlite-datasource", 
             "uid": "pp_sqlite" },
-          "queryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'make-pp-scripts' THEN event END) AS 'make-pp-scripts',\n MAX(CASE WHEN name = 'run-pp1' THEN event END) AS 'run-pp1'\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle;",
+          "queryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'make-pp-scripts' THEN event END) AS 'make-pp-scripts',\n MAX(CASE WHEN name = 'run-pp1' THEN event END) AS 'run-pp1'\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle\nORDER by cycle DESC;",
           "queryType": "table",
-          "rawQueryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'make-pp-scripts' THEN event END) AS 'make-pp-scripts',\n MAX(CASE WHEN name = 'run-pp1' THEN event END) AS 'run-pp1'\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle;",
+          "rawQueryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'make-pp-scripts' THEN event END) AS 'make-pp-scripts',\n MAX(CASE WHEN name = 'run-pp1' THEN event END) AS 'run-pp1'\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle\nORDER by cycle DESC;",
           "rawSql": "SELECT * FROM task_events;",
           "format": "table"
         }

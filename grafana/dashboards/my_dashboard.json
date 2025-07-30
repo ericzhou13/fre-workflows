@@ -1,0 +1,49 @@
+{
+  "id": null,
+  "title": "My Provisioned Dashboard",
+  "tags": [],
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 0,
+  "panels": [
+    {
+      "type": "table",
+      "title": "Sample Panel",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"},
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "frser-sqlite-datasource",
+            "uid": "gaea_sqlite"
+          },
+          
+          "queryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'transfer' THEN event END) AS transfer,\n MAX(CASE WHEN name = 'copy-job-database' THEN event END) AS \"copy-job-database\"\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle;\n",
+          "queryType": "table",
+          "rawQueryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'transfer' THEN event END) AS transfer,\n MAX(CASE WHEN name = 'copy-job-database' THEN event END) AS \"copy-job-database\"\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle;\n",
+          "format": "table"
+        },
+        {
+          "refId": "B",
+          "datasource": { 
+            "type": "frser-sqlite-datasource", 
+            "uid": "pp_sqlite" },
+          "queryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'make-pp-scripts' THEN event END) AS 'make-pp-scripts',\n MAX(CASE WHEN name = 'run-pp1' THEN event END) AS 'run-pp1'\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle;",
+          "queryType": "table",
+          "rawQueryText": "SELECT\n cycle,\n MAX(CASE WHEN name = 'make-pp-scripts' THEN event END) AS 'make-pp-scripts',\n MAX(CASE WHEN name = 'run-pp1' THEN event END) AS 'run-pp1'\nFROM task_events\nWHERE event = 'succeeded'\nGROUP BY cycle;",
+          "rawSql": "SELECT * FROM task_events;",
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        }
+      ]
+    }
+  ]
+}

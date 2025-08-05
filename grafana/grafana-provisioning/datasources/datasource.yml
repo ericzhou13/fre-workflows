@@ -6,7 +6,7 @@ datasources:
     access: proxy
     editable: true
     jsonData:
-      path: /mnt/cylc-data/gaea_db
+      path: /mnt/cylc-data/gaea/db
     uid: gaea_sqlite
 
   - name: pp_db
@@ -14,5 +14,5 @@ datasources:
     access: proxy
     editable: true
     jsonData:
-      path: /mnt/cylc-data/pp_db
+      path: /mnt/cylc-data/ppan/db
     uid: pp_sqlite
